@@ -5,7 +5,7 @@ import {
   View,
   ScrollView,
   SafeAreaView,
-  Button,
+  Pressable,
 } from "react-native";
 import { useState, useEffect, useRef } from "react";
 import Card from "./components/Card";
@@ -14,7 +14,7 @@ export default function App() {
   const [data, setData] = useState(null);
   const counter = useRef(1);
   useEffect(() => {
-    reset()
+    reset();
   }, []);
 
   async function getData() {
@@ -30,16 +30,24 @@ export default function App() {
 
   async function reset() {
     counter.current = 1;
-    getData()
+    getData();
   }
 
   if (data !== null) {
     console.log("HERE", data);
     return (
       <SafeAreaView style={styles.container}>
-        <Text>Rick & Morty !!!</Text>
-        <Button title="Next Page" color="teal" onPress={getData} />
-        <Button title="Reset" color="red" onPress={reset} />
+        <Text style={{ marginBottom: 24, marginTop: 24 }}>
+          Rick & Morty !!!
+        </Text>
+        <Pressable
+          style={{ marginBottom: 24, marginTop: 24 }}
+          color="teal"
+          onPress={getData}
+        > 
+          <Text style={{fontSize:24}}>Next</Text>
+        </Pressable>
+        <Pressable title="Reset" color="red" onPress={reset} />
         <ScrollView
           contentContainerStyle={{ minHeight: 900, paddingVertical: 24 }}
         >
