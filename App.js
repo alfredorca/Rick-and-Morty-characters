@@ -1,22 +1,36 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ScrollView, SafeAreaView} from "react-native";
-import { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Button,
+} from "react-native";
+import { useState, useEffect, useRef } from "react";
 import Card from "./components/Card";
 
 export default function App() {
   const [data, setData] = useState(null);
+  const counter = useRef(1);
   useEffect(() => {
-    getData();
+    reset()
   }, []);
 
   async function getData() {
     const req = await fetch(
-      "https://rickandmortyapi.com/api/character/?page=1"
+      `https://rickandmortyapi.com/api/character/?page=${counter.current}`
     );
     const res = await req.json();
 
     // console.log(res);
     await setData(res.results);
+    counter.current++;
+  }
+
+  async function reset() {
+    counter.current = 1;
+    getData()
   }
 
   if (data !== null) {
@@ -24,7 +38,11 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <Text>Rick & Morty !!!</Text>
-        <ScrollView contentContainerStyle={{minHeight: 900, paddingVertical:24}}>
+        <Button title="Next Page" color="teal" onPress={getData} />
+        <Button title="Reset" color="red" onPress={reset} />
+        <ScrollView
+          contentContainerStyle={{ minHeight: 900, paddingVertical: 24 }}
+        >
           {data.map((item, index) => {
             return <Card style={styles.text} key={index} data={item} />;
           })}
@@ -43,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical:24
+    paddingVertical: 24,
   },
   text: {
     color: "black",
