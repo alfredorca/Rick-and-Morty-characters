@@ -40,14 +40,12 @@ export default function App() {
         <Text style={{ marginBottom: 24, marginTop: 24 }}>
           Rick & Morty !!!
         </Text>
-        <Pressable
-          style={{ marginBottom: 24, marginTop: 24 }}
-          color="teal"
-          onPress={getData}
-        > 
-          <Text style={{fontSize:24}}>Next</Text>
+        <Pressable style={styles.pressable} onPress={getData}>
+          <Text style={styles.next}>Next</Text>
         </Pressable>
-        <Pressable title="Reset" color="red" onPress={reset} />
+        <Pressable onPress={reset} style={styles.pressable1} color="teal">
+          <Text style={styles.reset}>Reset</Text>
+        </Pressable>
         <ScrollView
           contentContainerStyle={{ minHeight: 900, paddingVertical: 24 }}
         >
@@ -73,5 +71,33 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
+  },
+  pressable: {
+    marginBottom: 24,
+    marginTop: 24,
+    backgroundColor: "skyblue",
+    padding: 8,
+    borderRadius: 8,
+  },
+  pressable1: {
+    marginBottom: 24,
+    marginTop: 24,
+    backgroundColor: "red",
+    padding: 8,
+    borderRadius: 8,
+  },
+  next: {
+    fontSize: 24,
+    color: "white",
+    minWidth: "50%",
+    textAlign: "center",
+    margin: 16,
+  },
+  reset: {
+    fontSize: 24,
+    color: "black",
+    minWidth: "50%",
+    textAlign: "center",
+    margin: 16,
   },
 });

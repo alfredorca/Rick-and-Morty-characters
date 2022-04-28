@@ -13,7 +13,7 @@ export default function Card({ data }) {
       />
       </View>
       <View style={styles.textContainer}>
-        <Text style={{fontSize: 20, fontStyle: 'bold'}}>{data.name}</Text>
+        <Text style={{fontSize: 20}}>{data.name}</Text>
         <Text style={{fontSize: 15, fontStyle: 'italic'}}>{data.species}</Text>
       </View>
     </View>
