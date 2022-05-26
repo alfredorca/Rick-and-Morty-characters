@@ -43,7 +43,12 @@ function Character({ route }) {
             colors={["rgba(0,0,0,0.8)", "transparent"]}
             style={styles.background}
           >
-            <Text style={styles.text}>{result.name}</Text>
+            <Text style={styles.nameStyle}>{result.name}</Text>
+            {/* <View style =/> */}
+            <View style= {styles.textContainer}>
+            <Text style={styles.text}>Species:{result.species}</Text>
+            <Text style={styles.text}>Gender:{result.gender}</Text>
+            </View>
             {/* <TouchableOpacity style={{height:64, width:64, backgroundColor:'salmon'}}>
             </TouchableOpacity> */}
           </LinearGradient>
@@ -72,13 +77,24 @@ const styles = StyleSheet.create({
   background:{
     flex:1
   },
-  text: {
-    color: "white",
-    fontSize: 42,
+  nameStyle: {
+    color: "#FCE205",
+    fontSize: 56,
     lineHeight: 84,
     fontWeight: "bold",
     textAlign: "center",
     backgroundColor: "transparent",
   },
-
+  text: {
+    color: "#FCE205",
+    fontSize: 32,
+    lineHeight: 40,
+    fontWeight: "bold",
+    backgroundColor: "transparent",
+    textAlign: "left",
+  },
+  textContainer: {
+    marginTop: 16,
+    marginLeft: 8
+    }
 });
