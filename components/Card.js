@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image, Platform } from "react-native";
 import React from "react";
 //
-export default function Card({ data }) {
+export default function Card({ data,  }) {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
